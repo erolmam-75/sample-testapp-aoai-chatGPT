@@ -759,6 +759,7 @@ const Chat = () => {
 
   return (
     <div className={styles.container} role="main">
+      {/* Main chat UI content */}
       {showAuthMessage ? (
         <Stack className={styles.chatEmptyState}>
           <ShieldLockRegular
@@ -793,7 +794,7 @@ const Chat = () => {
               <Stack className={styles.chatEmptyState}>
                 <img src={logo} className={styles.chatIcon} aria-hidden="true" />
                 <h1 className={styles.chatEmptyStateTitle}>{ui?.chat_title}</h1>
-                <h2 className={styles.chatEmptyStateSubtitle}>{ui?.chat_description}</h2>
+                <h2 className={styles.chatEmptyStateSubtitle}>Contact<a href="mailto:carina.astrom2@ingka.ikea.com" style={{ color: '#0F6CBD', textDecoration: 'underline' }}>ILO Team</a>for feedback!</h2> {/* {ui?.chat_description} */}
               </Stack>
             ) : (
               <div className={styles.chatMessageStream} style={{ marginBottom: isLoading ? '40px' : '0px' }} role="log">
@@ -1036,8 +1037,23 @@ const Chat = () => {
             appStateContext?.state.isCosmosDBAvailable?.status !== CosmosDBStatus.NotConfigured && <ChatHistoryPanel />}
         </Stack>
       )}
+      {/* Support label in bottom right */}
+      <div style={{
+        position: 'fixed',
+        right: 20,
+        bottom: 20,
+        background: 'rgba(255,255,255,0.95)',
+        color: '#0F6CBD',
+        padding: '8px 16px',
+        borderRadius: '8px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+        fontSize: '15px',
+        zIndex: 1000
+      }}>
+        Access? Click<a href="https://myidentity.apps.ikea.com/IdentityManager/page.axd?ContextID=VI_ITShop_ProductSelection&uid_accproduct=3582b922-bd9a-4b76-a8ac-8a75a8e2e4dc" style={{ color: '#0F6CBD', textDecoration: 'underline' }}>here</a>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Chat
